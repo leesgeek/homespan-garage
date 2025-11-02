@@ -1,9 +1,9 @@
 #include "HomeSpan.h"
 #include "DEV_GARAGE.h"
 
-const int closedSensorPin = 21; // The status pin connected to the garage
-const int openSensorPin = 36; // The status pin connected to the garage
-const int relayPin = 35; // The relay pin that actually controls the garage
+const int closedSensorPin = 15; // The status pin connected to the garage
+const int openSensorPin = 14; // The status pin connected to the garage
+const int relayPin = 12; // The relay pin that actually controls the garage
 
 void setup()
 {
