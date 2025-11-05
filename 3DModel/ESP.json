@@ -1,0 +1,24 @@
+{
+    "parameterSets": {
+        "design default values": {
+            "TopHole": "true",
+            "camSupX": "-7.5",
+            "camSupY": "-4.5",
+            "camSupZ": "3",
+            "camX": "-15",
+            "camXDim": "37",
+            "camY": "-9",
+            "camYDim": "42",
+            "camZ": "11.7",
+            "relSupX": "24",
+            "relSupY": "0.3",
+            "relSupZ": "3",
+            "relX": "37",
+            "relXDim": "37.5",
+            "relY": "-18",
+            "relYDIM": "26",
+            "relZ": "7.1"
+        }
+    },
+    "fileFormatVersion": "1"
+}
