@@ -79,6 +79,11 @@ if (-Not (Test-Path $cliPath)) {
 $targetVID = "VID_10C4"
 $targetPID = "PID_EA60"
 
+#CH340
+$targetVID = "VID_1A86"
+$targetPID = "PID_7523"
+
+
 # Get all PnP devices with COM ports
 $comPorts = Get-PnpDevice | Where-Object { $_.FriendlyName -match "COM[0-9]+" }
 

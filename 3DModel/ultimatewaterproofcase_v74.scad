@@ -58,19 +58,20 @@ V   KZZ DATE     COMMENT
 *******************************************************************************/
 
 include<RelaySupport.scad>
+include<BoardSupport.scad>
 include<esp01.scad>
 include<ESP32C_WebCam.scad>
 
 camXDim = 38.0;
-camYDim = 42.0;
+camYDim = 41.0;
 
 camX = -10;
-camY = -5;
+camY = -8.6;
 camZ = 7.1;
 
-camSupX = -10.0;
-camSupY = -5.0;
-camSupZ = 3.1;
+camSupX = -31.9;
+camSupY = 15.6;
+camSupZ = 2.3;
 
 relX = 37;
 relY = -18;
@@ -80,13 +81,13 @@ relXDim =37.4;
 relYDIM = 25.0;
 
 relSupX = 24;
-relSupY = 0.3;
+relSupY = 0.0;
 relSupZ = 3;
 
 TopHole = true;
 
+ hwModels();
 
-// hwModels();
 
 module hwModels(){
     translate([camX, camY, camZ]) {
@@ -112,11 +113,11 @@ module hwModels(){
 
 if(ShowBottom){
     translate([camSupX,camSupY,camSupZ]){
-        rotate([0,0,0]){
-            boardsupport(camXDim,camYDim);
+        rotate([0,0,270]){
+            boardsupportFront();
+            boardsupportBack();
         }
     }
-
 
     translate([relSupX,relSupY,relSupZ]){
         rotate([0,0,90]){
@@ -131,9 +132,9 @@ $fn                       = 80;   // [20:1:300]
 
 /* [View settings] */
 // Shows the Bottom of the case
-ShowBottom                = false;
+ShowBottom                = true;
 // Shows the top of the case
-ShowTop                   = true;
+ShowTop                   = false;
 // Distance between top and bottom (if both are side by side displayed)
 DistanceBetweenObjects    = 10;
 // Shows the housing assembled
@@ -152,7 +153,7 @@ SeeGrooveRidgeScrew       = false;
 // Length of the case
 Caselength                = 80;
 // Width of the case
-CaseWidth                 = 60;
+CaseWidth                 = 65;
 // Height of the case
 CaseHeight                = 27;
 // Splitt the Case height into bottom and top, check for the needed screws in echo output (console)
@@ -178,7 +179,7 @@ OuterBorder               = 0.8;   // [0.8:0.1:4]
 
 /* [Case Screw settings] */
 //2=m2/2.5=m2.5/3=m3/4=m4/5=m5   // max m5, larger sizes do not fit
-MetricScrewSize          = 3.0;     // [2:m2, 2.5: m2.5, 3: m3, 4: m4, 5: m5]
+MetricScrewSize          = 4.35;     // [2:m2, 2.5: m2.5, 3: m3, 4: m4, 5: m5]
 // Chose your Screw head
 ScrewHeadType            = 2;      // [1:1 Countersunk head screw, 2: 2 Round or hex screw head - Counterbore, 3: 3 Exposed head - No counter]
 // for round or hex screw head select the height of the head
@@ -186,7 +187,7 @@ ScrewHeadHeight  = 2.6;   // [0.0:0.1:10]
 // for round head screw select the diameter of the head, for hex screw select the diameter size of your Socket wrench diameter
 ScrewHeadDiameter  = 6;   // [0.0:0.1:20]
 // Screw or hot melt nut Hole deepness (deepness in the Body/Cylinder). If too big, through hole possible
-HoleDeepness              = 20.0 ; //[1:0.1:500]
+HoleDeepness              = 5.0 ; //[1:0.1:500]
 // Adds additional Screws on X axis (for large cases) --> Try it out
 XAdditionalScrew          = false;  // can be true or false / Adds additional Screws on X axis (for large cases) --> Try it out
 // Adds additional Screws on Y axis (for large cases) --> Try it out
@@ -200,7 +201,7 @@ NutSink                   = 4.0; // [0:0.1:500]
 
 /* [Hot melt copper nut settings (use for NutStyle 1) can also be used for self-tapping screws] */
 // Hole diameter for self-tapped screw or hot melt copper nut (Measure the diameter))
-HoleDiaThread             = 3.2 ; //[1:0.1:10]
+HoleDiaThread             = 4.5 ; //[1:0.1:10]
 // Length of the hot melt copper nut (Measure the length) - It is just used to calculate the min length of the screw to output in console
 HolelengthHotMeltNut      = 10 ; //[1:0.1:30]
 
@@ -302,14 +303,14 @@ ShowSideWallCutOut_A        = true;
 // Count of holes, if there is an additional screw on X or Y side the hole in the middle is not showed
 CountOfSideWallCutOut_A     = 1;     //[1:1:3]
 // X Cut Out Length
-SideWallCutOutWidth_A     = 22;  //[1:0.1:80]
+SideWallCutOutWidth_A     = 11; //22;  //[1:0.1:80]
 SideWallCutOutHeight_A     = 7;  //[1:0.1:80]
 // Add or decrease height position (up and down, 0 = centered)
 SideWallCutOutOffset_Z_A     = 2.1;
 // Add or decrease distance between the holes
 SideWallCutOutDistance_A     = 0;
 // Add or decrease horizontal position of the holes (0 = centered)
-SideWallCutOutPosition_A     = -6.3;
+SideWallCutOutPosition_A     = -11.8; //-6.3;
 
 /* [Wall CutOut settings side B ] */
 // Activate customizable cut out
@@ -317,14 +318,14 @@ ShowSideWallCutOut_B        = true;
 // Count of holes, if there is an additional screw on X or Y side the hole in the middle is not showed
 CountOfSideWallCutOut_B     = 1;     //[1:1:3]
 // X Cut Out Length
-SideWallCutOutWidth_B     = 11;  //[1:0.1:80]
-SideWallCutOutHeight_B     = 5.5;  //[1:0.1:80]
+SideWallCutOutWidth_B     = 12;  //[1:0.1:80]
+SideWallCutOutHeight_B     = 7;  //[1:0.1:80]
 // Add or decrease height position (up and down, 0 = centered)
-SideWallCutOutOffset_Z_B     = -3.5;
+SideWallCutOutOffset_Z_B     = -4.1;
 // Add or decrease distance between the holes
 SideWallCutOutDistance_B     = 0;
 // Add or decrease horizontal position of the holes (0 = centered)
-SideWallCutOutPosition_B     = -15.5;
+SideWallCutOutPosition_B     = -16;
 
 
 /* [Wall Holes settings side A (for cable gland cut)] */
@@ -644,8 +645,9 @@ module BodyTop () {
             }
             if (TopHole)
             {
-                translate([10,5,2]){
-                cylinder(SideWallThickness+3,5.5,4.5,true);
+                //translate([10,4.15,2]){
+                translate([10,1.6,2]){
+                cylinder(SideWallThickness+3,4.5,4.,true);
                 }
              
                 
