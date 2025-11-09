@@ -1,8 +1,8 @@
 #include "HomeSpan.h"
 #include "DEV_GARAGE.h"
 
-const int closedSensorPin = 22; // The status pin connected to the garage
-const int openSensorPin = 23; // The status pin connected to the garage
+const int closedSensorPin = 12; // The status pin connected to the garage
+const int openSensorPin = 13; // The status pin connected to the garage
 const int relayPin = 16; // The relay pin that actually controls the garage
 
 void setup()
@@ -11,12 +11,12 @@ void setup()
 
     homeSpan.enableWebLog(100,"pool.ntp.org","UTC+10",""); //  enableWebLog(uint16_t maxEntries, const char *timeServerURL, const char *timeZone, const char *logURL)`
     homeSpan.setWifiCredentials("mojo", "knightscorner");  // Set your Wi-Fi credentials
-    homeSpan.setPairingCode("92747402");                                  // pairing pin
+    homeSpan.setPairingCode("76697669");               // pairing pin
     homeSpan.setControlPin(0);  // 
     homeSpan.setStatusPin(15);  //
     homeSpan.setStatusAutoOff(10);
 
-    homeSpan.enableOTA("snowpole"); // Enable OTA updates
+    homeSpan.enableOTA("snowpole"); // Enable OTA updates homespan-ot 
     
     homeSpan.begin(Category::GarageDoorOpeners, "Garage Door");
     new SpanAccessory();
@@ -29,7 +29,7 @@ void setup()
             new Characteristic::CurrentDoorState();
             new Characteristic::TargetDoorState();
             new Characteristic::ObstructionDetected();
-
+ 
         new DEV_GARAGE(closedSensorPin, openSensorPin, relayPin);
 }
 

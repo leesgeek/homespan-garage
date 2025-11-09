@@ -5,9 +5,9 @@ $sketchFile = Get-ChildItem -Filter *.ino | Select-Object -First 1
 $sketchName = [System.IO.Path]::GetFileNameWithoutExtension($sketchFile.Name)
 $buildPath = Join-Path $projectDir "build"
 $boardFQBN = "esp32:esp32:esp32"  # Change to match your board
-$espIp = "192.168.1.135"          # ESP32 IP address
+$espIp = "192.168.1.250"          # ESP32 IP address
 $otaPort = 3232                   # Default OTA port
-$auth = "homespan-ota"            # OTA password
+$auth = "snowpole"            # OTA password
 
 # Locate espota.py
 $arduinoCorePath = "$env:USERPROFILE\AppData\Local\Arduino15\packages\esp32\hardware\esp32"
